@@ -197,7 +197,7 @@
     <header>
         <div class="logo">
             <a href="index.html">
-                <img src="image.png" alt="Logo du Psychologue" />
+                <img src="logo.png" alt="Logo du Psychologue" />
             </a>
         </div>
         <div class="menu-toggle" onclick="toggleMenu()">
@@ -289,7 +289,7 @@
 
         document.getElementById("appointment-form").addEventListener("submit", function(event) {
             event.preventDefault();
-            emailjs.sendForm("psychologue", "template_3al6ug8", this)
+            emailjs.sendForm("drnadiaberrada", "template_3al6ug8", this)
                 .then(() => {
                     document.getElementById("confirmation-message").style.display = "block";
                 }, (error) => {
