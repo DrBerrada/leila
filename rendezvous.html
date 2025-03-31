@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prise de Rendez-vous - Psychologue</title>
+    <meta name="referrer" content="no-referrer">
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("xdceAmxJUwzFkgGta"); // Remplacez par votre User ID EmailJS
+        })();
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #6a85b6, #7f7fd5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .logo img {
+            height: 80px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: #E91E63;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .menu-toggle div {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Services Form Section */
+        .form-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin-top: 100px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #388E3C;
+        }
+
+        #confirmation-message {
+            display: none;
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background-color: #fff;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                padding: 20px 0;
+                box-shadow: 0 4px 15px rgba(236, 6, 159, 0.822);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+                text-align: center;
+            }
+
+            .nav-links li a {
+                font-size: 18px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="image.png" alt="Logo du Psychologue" />
+            </a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="rendezvous.html">Rendez-vous</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="form-section">
+        <h2>Prendre un Rendez-vous</h2>
+        <form id="appointment-form">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" name="Nom" id="nom" placeholder="Votre Nom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telephone">Téléphone</label>
+                <input type="tel" name="Téléphone" id="telephone" placeholder="Votre Téléphone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="jour">Date</label>
+                <input type="date" name="Date" id="jour" required>
+            </div>
+
+            <div class="form-group">
+                <label for="heure">Heure</label>
+                <select name="Heure" id="heure" required></select>
+            </div>
+
+            <div class="form-group">
+                <label for="service">Service</label>
+                <select name="Service" id="service" required>
+                    <option value="">Sélectionnez un service</option>
+                    <option>Consultation individuelle</option>
+                    <option>Consultation de couple</option>
+                    <option>Thérapie de groupe</option>
+                    <option>Thérapie cognitivo-comportementale (TCC)</option>
+                    <option>Gestion du stress</option>
+                    <option>Développement personnel</option>
+                    <option>Accompagnement familial</option>
+                    <option>Psychothérapie pour enfants</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">Envoyer</button>
+        </form>
+        <p id="confirmation-message">Votre rendez-vous a été envoyé avec succès !</p>
+    </section>
+
+    <script>
+        document.getElementById("jour").addEventListener("change", function() {
+            const date = new Date(this.value);
+            const day = date.getDay();
+            const heureSelect = document.getElementById("heure");
+            heureSelect.innerHTML = "";
+
+            let horaires = [];
+            if (day >= 1 && day <= 5) {
+                for (let h = 9; h <= 18; h++) {
+                    horaires.push(`${h}:00`, `${h}:30`);
+                }
+            } else if (day === 6) {
+                for (let h = 9; h <= 13; h++) {
+                    horaires.push(`${h}:00`, `${h}:30`);
+                }
+            } else {
+                alert("Aucun rendez-vous le dimanche !");
+                return;
+            }
+
+            horaires.forEach(heure => {
+                const option = document.createElement("option");
+                option.value = heure;
+                option.textContent = heure;
+                heureSelect.appendChild(option);
+            });
+        });
+
+        document.getElementById("appointment-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            emailjs.sendForm("psychologue", "template_3al6ug8", this)
+                .then(() => {
+                    document.getElementById("confirmation-message").style.display = "block";
+                }, (error) => {
+                    alert("Erreur lors de l'envoi : " + JSON.stringify(error));
+                });
+        });
+    </script>
+</body>
+</html>

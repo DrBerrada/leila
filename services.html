@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services - Cabinet de Psychologie</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.2);
+        }
+
+        header .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #555555;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #1E90FF;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .menu-toggle div {
+            width: 30px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .services-hero {
+            height: 75vh;
+            background: url('https://www.afpen.fr/wp-content/uploads/2021/09/fond_simple.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: blue;
+            text-align: center;
+            position: relative;
+            filter: brightness(70%);
+        }
+
+        .services-hero .overlay {
+            background-color: rgba(0, 0, 255, 0);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 40px rgba(27, 95, 185, 0.3);
+        }
+
+        .services-hero h1 {
+            font-size: 65px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .services-hero p {
+            font-size: 24px;
+            font-weight: 300;
+            margin-top: 15px;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 80px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .services-section h2 {
+            font-size: 45px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+
+        .services-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            max-width: 350px;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 255, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card .card-content {
+            padding: 30px;
+            text-align: left;
+        }
+
+        .card h3 {
+            font-size: 26px;
+            color: #1E90FF;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 18px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .card .btn {
+            padding: 14px 30px;
+            background-color: #1E90FF;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .card .btn:hover {
+            background-color: #4682B4;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #1E90FF;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background-color: #fff;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                padding: 20px 0;
+                box-shadow: 0 4px 15px rgba(0, 0, 255, 0.2);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                font-size: 18px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Logo du Cabinet de Psychologie" />
+            </a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="rendezvous.html">Rendez-vous</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('nav ul').classList.toggle('active');
+        }
+    </script>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="overlay">
+            <h1><b>Cabinet de Psychologie</b></h1>
+            <p><b>Des solutions adaptées pour améliorer votre bien-être mental.</b></p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <h2>Nos Services</h2>
+        <div class="services-cards">
+            <!-- Card 1: Thérapie Cognitivo-Comportementale -->
+            <div class="card">
+                <img src="https://www.psypluriel.be/wp-content/uploads/2024/02/therapie-cognitivo-comportementale-1024x1024.jpg" alt="Thérapie Cognitivo-Comportementale">
+                <div class="card-content">
+                    <h3>Thérapie Cognitivo-Comportementale (TCC)</h3>
+                    <p>La TCC aide à identifier et changer les pensées négatives, ce qui permet de mieux gérer les émotions et les comportements. Idéale pour les troubles anxieux, la dépression, et plus.</p>
+                    <a href="tcc.html" class="btn">En savoir plus</a>
+                </div>
+            </div>
+
+            <!-- Card 2: Thérapie de Couple -->
+            <div class="card">
+                <img src="https://www.qare.fr/wp-content/uploads/2021/11/GettyImages-1180010656-1.jpg" alt="Thérapie de Couple">
+                <div class="card-content">
+                    <h3>Thérapie de Couple</h3>
+                    <p>La thérapie de couple permet de résoudre les conflits, améliorer la communication et renforcer la relation. Un accompagnement pour retrouver l'équilibre dans la vie à deux.</p>
+                    <a href="couple.html" class="btn">En savoir plus</a>
+                </div>
+            </div>
+
+            <!-- Card 3: Thérapie pour Enfants -->
+            <div class="card">
+                <img src="https://www.psychologue.net/pro/psicologos_fr/articles/6a/6b/396203/62325/shutterstock-1200155323.jpg" alt="Thérapie pour Enfants">
+                <div class="card-content">
+                    <h3>Thérapie pour Enfants</h3>
+                    <p>Nous offrons des séances adaptées aux enfants pour les aider à surmonter des difficultés émotionnelles, sociales ou comportementales dans un environnement sécurisé et bienveillant.</p>
+                    <a href="enfants.html" class="btn">En savoir plus</a>
+                </div>
+            </div>
+
+            <!-- Card 4: Gestion du Stress et de l'Anxiété -->
+            <div class="card">
+                <img src="https://www.psychologue.net/site/article/65895/55164/hypnose-stress-anxiete_ai1.jpg" alt="Gestion du Stress et de l'Anxiété">
+                <div class="card-content">
+                    <h3>Gestion du Stress et de l'Anxiété</h3>
+                    <p>Nous proposons des techniques et stratégies pour mieux gérer le stress quotidien et l'anxiété, pour retrouver calme et sérénité.</p>
+                    <a href="stress.html" class="btn">En savoir plus</a>
+                </div>
+            </div>
+
+            <!-- Card 5: Coaching de Vie -->
+            <div class="card">
+                <img src="https://d1rluokkqqu56n.cloudfront.net/wpapp/uploads/2024/02/15133202/coach-de-vie-metier.jpeg" alt="Coaching de Vie">
+                <div class="card-content">
+                    <h3>Coaching de Vie</h3>
+                    <p>Le coaching de vie vous aide à définir vos objectifs personnels, à surmonter les obstacles et à maximiser votre potentiel pour une vie épanouie.</p>
+                    <a href="coaching.html" class="btn">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Cabinet de Psychologie - Tous droits réservés</p>
+    </footer>
+
+</body>
+</html>
